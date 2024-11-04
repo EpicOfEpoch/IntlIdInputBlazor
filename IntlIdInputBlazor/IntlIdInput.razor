@@ -1,0 +1,58 @@
+﻿@inherits Microsoft.AspNetCore.Components.Forms.InputBase<IntlId>
+@inject IntlIdInputJsInterop IntlIdInputJsInterop
+
+<input type="text" @onchange="OnChange" @ref="_idInput"/>
+
+@code {
+    [Parameter]
+    public bool AllowDropDown { get; set; } = true;
+
+    [Parameter]
+    public IEnumerable<string> ExcludeCountries { get; set; } = Enumerable.Empty<string>();
+
+    [Parameter]
+    public string InitialCountry { get; set; }
+
+    [Parameter]
+    public IEnumerable<string> OnlyCountries { get; set; } = Enumerable.Empty<string>();
+
+    [Parameter]
+    public IEnumerable<string> PreferredCountries { get; set; } = new[] { "us", "gb" };
+
+    private ElementReference _idInput;
+    private int _inputIndex;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            _inputIndex = await IntlIdInputJsInterop.Init(_idInput, new
+            {
+                AllowDropDown,
+                ExcludeCountries,
+                InitialCountry,
+                OnlyCountries,
+                PreferredCountries
+            });
+
+            if (CurrentValue is not null)
+            {
+                await IntlIdInputJsInterop.SetNumber(_inputIndex, CurrentValue.Number);
+            }
+        }
+    }
+
+    protected override bool TryParseValueFromString(string value, out IntlId result, out string validationErrorMessage)
+    {
+        throw new NotImplementedException();
+    }
+
+    private async void OnChange(ChangeEventArgs e)
+    {
+        CurrentValue = await IntlIdInputJsInterop.GetData(_inputIndex);
+        if (CurrentValue is not null)
+        {
+            await IntlIdInputJsInterop.SetNumber(_inputIndex, CurrentValue.Number);
+        }
+    }
+}
