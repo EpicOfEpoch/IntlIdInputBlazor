@@ -1,7 +1,9 @@
 const inputs = [];
 
-export function init(element, options) {
-    const iii = window.intlIdInput(element, options);
+export function init(element, options, dotNetHelper, onCountryChange) {
+    const iii = window.intlIdInput(element, options, function (selectedCountryData) {
+        dotNetHelper.invokeMethodAsync(onCountryChange, selectedCountryData);
+    });
     inputs.push(iii);
     return inputs.indexOf(iii);
 }

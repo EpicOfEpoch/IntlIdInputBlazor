@@ -1,9 +1,9 @@
 // wrap in UMD
-(function(factory) {
+(function (factory) {
     if (typeof module === "object" && module.exports) module.exports = factory(); else window.intlIdInput = factory();
-})(function(undefined) {
+})(function (undefined) {
     "use strict";
-    return function() {
+    return function () {
         // Array of country objects for the flag dropdown.
         // Here is the criteria for the plugin to support a given country/territory
         // - It has an iso2 code: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
@@ -18,7 +18,7 @@
         //    Order (if >1 country with same dial code),
         //    Area codes
         // ]
-        var allCountries = [ [ "Afghanistan", "af", "93" ], [ "Albania", "al", "355" ], [ "Algeria", "dz", "213" ], [ "American Samoa", "as", "1", 5, [ "684" ] ], [ "Andorra", "ad", "376" ], [ "Angola", "ao", "244" ], [ "Anguilla", "ai", "1", 6, [ "264" ] ], [ "Antigua & Barbuda", "ag", "1", 7, [ "268" ] ], [ "Argentina", "ar", "54" ], [ "Armenia", "am", "374" ], [ "Aruba", "aw", "297" ], [ "Ascension Island", "ac", "247" ], [ "Australia", "au", "61", 0 ], [ "Austria", "at", "43" ], [ "Azerbaijan", "az", "994" ], [ "Bahamas", "bs", "1", 8, [ "242" ] ], [ "Bahrain", "bh", "973" ], [ "Bangladesh", "bd", "880" ], [ "Barbados", "bb", "1", 9, [ "246" ] ], [ "Belarus", "by", "375" ], [ "Belgium", "be", "32" ], [ "Belize", "bz", "501" ], [ "Benin", "bj", "229" ], [ "Bermuda", "bm", "1", 10, [ "441" ] ], [ "Bhutan", "bt", "975" ], [ "Bolivia", "bo", "591" ], [ "Bosnia & Herzegovina", "ba", "387" ], [ "Botswana", "bw", "267" ], [ "Brazil", "br", "55" ], [ "British Indian Ocean Territory", "io", "246" ], [ "British Virgin Islands", "vg", "1", 11, [ "284" ] ], [ "Brunei", "bn", "673" ], [ "Bulgaria", "bg", "359" ], [ "Burkina Faso", "bf", "226" ], [ "Burundi", "bi", "257" ], [ "Cambodia", "kh", "855" ], [ "Cameroon", "cm", "237" ], [ "Canada", "ca", "1", 1, [ "204", "226", "236", "249", "250", "263", "289", "306", "343", "354", "365", "367", "368", "382", "387", "403", "416", "418", "428", "431", "437", "438", "450", "584", "468", "474", "506", "514", "519", "548", "579", "581", "584", "587", "604", "613", "639", "647", "672", "683", "705", "709", "742", "753", "778", "780", "782", "807", "819", "825", "867", "873", "902", "905" ] ], [ "Cape Verde", "cv", "238" ], [ "Caribbean Netherlands", "bq", "599", 1, [ "3", "4", "7" ] ], [ "Cayman Islands", "ky", "1", 12, [ "345" ] ], [ "Central African Republic", "cf", "236" ], [ "Chad", "td", "235" ], [ "Chile", "cl", "56" ], [ "China", "cn", "86" ], [ "Christmas Island", "cx", "61", 2, [ "89164" ] ], [ "Cocos (Keeling) Islands", "cc", "61", 1, [ "89162" ] ], [ "Colombia", "co", "57" ], [ "Comoros", "km", "269" ], [ "Congo - Brazzaville", "cg", "242" ], [ "Congo - Kinshasa", "cd", "243" ], [ "Cook Islands", "ck", "682" ], [ "Costa Rica", "cr", "506" ], [ "Côte d’Ivoire", "ci", "225" ], [ "Croatia", "hr", "385" ], [ "Cuba", "cu", "53" ], [ "Curaçao", "cw", "599", 0 ], [ "Cyprus", "cy", "357" ], [ "Czech Republic", "cz", "420" ], [ "Denmark", "dk", "45" ], [ "Djibouti", "dj", "253" ], [ "Dominica", "dm", "1", 13, [ "767" ] ], [ "Dominican Republic", "do", "1", 2, [ "809", "829", "849" ] ], [ "Ecuador", "ec", "593" ], [ "Egypt", "eg", "20" ], [ "El Salvador", "sv", "503" ], [ "Equatorial Guinea", "gq", "240" ], [ "Eritrea", "er", "291" ], [ "Estonia", "ee", "372" ], [ "Eswatini", "sz", "268" ], [ "Ethiopia", "et", "251" ], [ "Falkland Islands", "fk", "500" ], [ "Faroe Islands", "fo", "298" ], [ "Fiji", "fj", "679" ], [ "Finland", "fi", "358", 0 ], [ "France", "fr", "33" ], [ "French Guiana", "gf", "594" ], [ "French Polynesia", "pf", "689" ], [ "Gabon", "ga", "241" ], [ "Gambia", "gm", "220" ], [ "Georgia", "ge", "995" ], [ "Germany", "de", "49" ], [ "Ghana", "gh", "233" ], [ "Gibraltar", "gi", "350" ], [ "Greece", "gr", "30" ], [ "Greenland", "gl", "299" ], [ "Grenada", "gd", "1", 14, [ "473" ] ], [ "Guadeloupe", "gp", "590", 0 ], [ "Guam", "gu", "1", 15, [ "671" ] ], [ "Guatemala", "gt", "502" ], [ "Guernsey", "gg", "44", 1, [ "1481", "7781", "7839", "7911" ] ], [ "Guinea", "gn", "224" ], [ "Guinea-Bissau", "gw", "245" ], [ "Guyana", "gy", "592" ], [ "Haiti", "ht", "509" ], [ "Honduras", "hn", "504" ], [ "Hong Kong", "hk", "852" ], [ "Hungary", "hu", "36" ], [ "Iceland", "is", "354" ], [ "India", "in", "91" ], [ "Indonesia", "id", "62" ], [ "Iran", "ir", "98" ], [ "Iraq", "iq", "964" ], [ "Ireland", "ie", "353" ], [ "Isle of Man", "im", "44", 2, [ "1624", "74576", "7524", "7924", "7624" ] ], [ "Israel", "il", "972" ], [ "Italy", "it", "39", 0 ], [ "Jamaica", "jm", "1", 4, [ "876", "658" ] ], [ "Japan", "jp", "81" ], [ "Jersey", "je", "44", 3, [ "1534", "7509", "7700", "7797", "7829", "7937" ] ], [ "Jordan", "jo", "962" ], [ "Kazakhstan", "kz", "7", 1, [ "33", "7" ] ], [ "Kenya", "ke", "254" ], [ "Kiribati", "ki", "686" ], [ "Kosovo", "xk", "383" ], [ "Kuwait", "kw", "965" ], [ "Kyrgyzstan", "kg", "996" ], [ "Laos", "la", "856" ], [ "Latvia", "lv", "371" ], [ "Lebanon", "lb", "961" ], [ "Lesotho", "ls", "266" ], [ "Liberia", "lr", "231" ], [ "Libya", "ly", "218" ], [ "Liechtenstein", "li", "423" ], [ "Lithuania", "lt", "370" ], [ "Luxembourg", "lu", "352" ], [ "Macau", "mo", "853" ], [ "Madagascar", "mg", "261" ], [ "Malawi", "mw", "265" ], [ "Malaysia", "my", "60" ], [ "Maldives", "mv", "960" ], [ "Mali", "ml", "223" ], [ "Malta", "mt", "356" ], [ "Marshall Islands", "mh", "692" ], [ "Martinique", "mq", "596" ], [ "Mauritania", "mr", "222" ], [ "Mauritius", "mu", "230" ], [ "Mayotte", "yt", "262", 1, [ "269", "639" ] ], [ "Mexico", "mx", "52" ], [ "Micronesia", "fm", "691" ], [ "Moldova", "md", "373" ], [ "Monaco", "mc", "377" ], [ "Mongolia", "mn", "976" ], [ "Montenegro", "me", "382" ], [ "Montserrat", "ms", "1", 16, [ "664" ] ], [ "Morocco", "ma", "212", 0 ], [ "Mozambique", "mz", "258" ], [ "Myanmar (Burma)", "mm", "95" ], [ "Namibia", "na", "264" ], [ "Nauru", "nr", "674" ], [ "Nepal", "np", "977" ], [ "Netherlands", "nl", "31" ], [ "New Caledonia", "nc", "687" ], [ "New Zealand", "nz", "64" ], [ "Nicaragua", "ni", "505" ], [ "Niger", "ne", "227" ], [ "Nigeria", "ng", "234" ], [ "Niue", "nu", "683" ], [ "Norfolk Island", "nf", "672" ], [ "North Korea", "kp", "850" ], [ "North Macedonia", "mk", "389" ], [ "Northern Mariana Islands", "mp", "1", 17, [ "670" ] ], [ "Norway", "no", "47", 0 ], [ "Oman", "om", "968" ], [ "Pakistan", "pk", "92" ], [ "Palau", "pw", "680" ], [ "Palestine", "ps", "970" ], [ "Panama", "pa", "507" ], [ "Papua New Guinea", "pg", "675" ], [ "Paraguay", "py", "595" ], [ "Peru", "pe", "51" ], [ "Philippines", "ph", "63" ], [ "Poland", "pl", "48" ], [ "Portugal", "pt", "351" ], [ "Puerto Rico", "pr", "1", 3, [ "787", "939" ] ], [ "Qatar", "qa", "974" ], [ "Réunion", "re", "262", 0 ], [ "Romania", "ro", "40" ], [ "Russia", "ru", "7", 0 ], [ "Rwanda", "rw", "250" ], [ "Samoa", "ws", "685" ], [ "San Marino", "sm", "378" ], [ "São Tomé & Príncipe", "st", "239" ], [ "Saudi Arabia", "sa", "966" ], [ "Senegal", "sn", "221" ], [ "Serbia", "rs", "381" ], [ "Seychelles", "sc", "248" ], [ "Sierra Leone", "sl", "232" ], [ "Singapore", "sg", "65" ], [ "Sint Maarten", "sx", "1", 21, [ "721" ] ], [ "Slovakia", "sk", "421" ], [ "Slovenia", "si", "386" ], [ "Solomon Islands", "sb", "677" ], [ "Somalia", "so", "252" ], [ "South Africa", "za", "27" ], [ "South Korea", "kr", "82" ], [ "South Sudan", "ss", "211" ], [ "Spain", "es", "34" ], [ "Sri Lanka", "lk", "94" ], [ "St Barthélemy", "bl", "590", 1 ], [ "St Helena", "sh", "290" ], [ "St Kitts & Nevis", "kn", "1", 18, [ "869" ] ], [ "St Lucia", "lc", "1", 19, [ "758" ] ], [ "St Martin", "mf", "590", 2 ], [ "St Pierre & Miquelon", "pm", "508" ], [ "St Vincent & Grenadines", "vc", "1", 20, [ "784" ] ], [ "Sudan", "sd", "249" ], [ "Suriname", "sr", "597" ], [ "Svalbard & Jan Mayen", "sj", "47", 1, [ "79" ] ], [ "Sweden", "se", "46" ], [ "Switzerland", "ch", "41" ], [ "Syria", "sy", "963" ], [ "Taiwan", "tw", "886" ], [ "Tajikistan", "tj", "992" ], [ "Tanzania", "tz", "255" ], [ "Thailand", "th", "66" ], [ "Timor-Leste", "tl", "670" ], [ "Togo", "tg", "228" ], [ "Tokelau", "tk", "690" ], [ "Tonga", "to", "676" ], [ "Trinidad & Tobago", "tt", "1", 22, [ "868" ] ], [ "Tunisia", "tn", "216" ], [ "Turkey", "tr", "90" ], [ "Turkmenistan", "tm", "993" ], [ "Turks & Caicos Islands", "tc", "1", 23, [ "649" ] ], [ "Tuvalu", "tv", "688" ], [ "Uganda", "ug", "256" ], [ "Ukraine", "ua", "380" ], [ "United Arab Emirates", "ae", "971" ], [ "United Kingdom", "gb", "44", 0 ], [ "United States", "us", "1", 0 ], [ "Uruguay", "uy", "598" ], [ "US Virgin Islands", "vi", "1", 24, [ "340" ] ], [ "Uzbekistan", "uz", "998" ], [ "Vanuatu", "vu", "678" ], [ "Vatican City", "va", "39", 1, [ "06698" ] ], [ "Venezuela", "ve", "58" ], [ "Vietnam", "vn", "84" ], [ "Wallis & Futuna", "wf", "681" ], [ "Western Sahara", "eh", "212", 1, [ "5288", "5289" ] ], [ "Yemen", "ye", "967" ], [ "Zambia", "zm", "260" ], [ "Zimbabwe", "zw", "263" ], [ "Åland Islands", "ax", "358", 1, [ "18" ] ] ];
+        var allCountries = [["Afghanistan", "af", "93"], ["Albania", "al", "355"], ["Algeria", "dz", "213"], ["American Samoa", "as", "1", 5, ["684"]], ["Andorra", "ad", "376"], ["Angola", "ao", "244"], ["Anguilla", "ai", "1", 6, ["264"]], ["Antigua & Barbuda", "ag", "1", 7, ["268"]], ["Argentina", "ar", "54"], ["Armenia", "am", "374"], ["Aruba", "aw", "297"], ["Ascension Island", "ac", "247"], ["Australia", "au", "61", 0], ["Austria", "at", "43"], ["Azerbaijan", "az", "994"], ["Bahamas", "bs", "1", 8, ["242"]], ["Bahrain", "bh", "973"], ["Bangladesh", "bd", "880"], ["Barbados", "bb", "1", 9, ["246"]], ["Belarus", "by", "375"], ["Belgium", "be", "32"], ["Belize", "bz", "501"], ["Benin", "bj", "229"], ["Bermuda", "bm", "1", 10, ["441"]], ["Bhutan", "bt", "975"], ["Bolivia", "bo", "591"], ["Bosnia & Herzegovina", "ba", "387"], ["Botswana", "bw", "267"], ["Brazil", "br", "55"], ["British Indian Ocean Territory", "io", "246"], ["British Virgin Islands", "vg", "1", 11, ["284"]], ["Brunei", "bn", "673"], ["Bulgaria", "bg", "359"], ["Burkina Faso", "bf", "226"], ["Burundi", "bi", "257"], ["Cambodia", "kh", "855"], ["Cameroon", "cm", "237"], ["Canada", "ca", "1", 1, ["204", "226", "236", "249", "250", "263", "289", "306", "343", "354", "365", "367", "368", "382", "387", "403", "416", "418", "428", "431", "437", "438", "450", "584", "468", "474", "506", "514", "519", "548", "579", "581", "584", "587", "604", "613", "639", "647", "672", "683", "705", "709", "742", "753", "778", "780", "782", "807", "819", "825", "867", "873", "902", "905"]], ["Cape Verde", "cv", "238"], ["Caribbean Netherlands", "bq", "599", 1, ["3", "4", "7"]], ["Cayman Islands", "ky", "1", 12, ["345"]], ["Central African Republic", "cf", "236"], ["Chad", "td", "235"], ["Chile", "cl", "56"], ["China", "cn", "86"], ["Christmas Island", "cx", "61", 2, ["89164"]], ["Cocos (Keeling) Islands", "cc", "61", 1, ["89162"]], ["Colombia", "co", "57"], ["Comoros", "km", "269"], ["Congo - Brazzaville", "cg", "242"], ["Congo - Kinshasa", "cd", "243"], ["Cook Islands", "ck", "682"], ["Costa Rica", "cr", "506"], ["Côte d’Ivoire", "ci", "225"], ["Croatia", "hr", "385"], ["Cuba", "cu", "53"], ["Curaçao", "cw", "599", 0], ["Cyprus", "cy", "357"], ["Czech Republic", "cz", "420"], ["Denmark", "dk", "45"], ["Djibouti", "dj", "253"], ["Dominica", "dm", "1", 13, ["767"]], ["Dominican Republic", "do", "1", 2, ["809", "829", "849"]], ["Ecuador", "ec", "593"], ["Egypt", "eg", "20"], ["El Salvador", "sv", "503"], ["Equatorial Guinea", "gq", "240"], ["Eritrea", "er", "291"], ["Estonia", "ee", "372"], ["Eswatini", "sz", "268"], ["Ethiopia", "et", "251"], ["Falkland Islands", "fk", "500"], ["Faroe Islands", "fo", "298"], ["Fiji", "fj", "679"], ["Finland", "fi", "358", 0], ["France", "fr", "33"], ["French Guiana", "gf", "594"], ["French Polynesia", "pf", "689"], ["Gabon", "ga", "241"], ["Gambia", "gm", "220"], ["Georgia", "ge", "995"], ["Germany", "de", "49"], ["Ghana", "gh", "233"], ["Gibraltar", "gi", "350"], ["Greece", "gr", "30"], ["Greenland", "gl", "299"], ["Grenada", "gd", "1", 14, ["473"]], ["Guadeloupe", "gp", "590", 0], ["Guam", "gu", "1", 15, ["671"]], ["Guatemala", "gt", "502"], ["Guernsey", "gg", "44", 1, ["1481", "7781", "7839", "7911"]], ["Guinea", "gn", "224"], ["Guinea-Bissau", "gw", "245"], ["Guyana", "gy", "592"], ["Haiti", "ht", "509"], ["Honduras", "hn", "504"], ["Hong Kong", "hk", "852"], ["Hungary", "hu", "36"], ["Iceland", "is", "354"], ["India", "in", "91"], ["Indonesia", "id", "62"], ["Iran", "ir", "98"], ["Iraq", "iq", "964"], ["Ireland", "ie", "353"], ["Isle of Man", "im", "44", 2, ["1624", "74576", "7524", "7924", "7624"]], ["Israel", "il", "972"], ["Italy", "it", "39", 0], ["Jamaica", "jm", "1", 4, ["876", "658"]], ["Japan", "jp", "81"], ["Jersey", "je", "44", 3, ["1534", "7509", "7700", "7797", "7829", "7937"]], ["Jordan", "jo", "962"], ["Kazakhstan", "kz", "7", 1, ["33", "7"]], ["Kenya", "ke", "254"], ["Kiribati", "ki", "686"], ["Kosovo", "xk", "383"], ["Kuwait", "kw", "965"], ["Kyrgyzstan", "kg", "996"], ["Laos", "la", "856"], ["Latvia", "lv", "371"], ["Lebanon", "lb", "961"], ["Lesotho", "ls", "266"], ["Liberia", "lr", "231"], ["Libya", "ly", "218"], ["Liechtenstein", "li", "423"], ["Lithuania", "lt", "370"], ["Luxembourg", "lu", "352"], ["Macau", "mo", "853"], ["Madagascar", "mg", "261"], ["Malawi", "mw", "265"], ["Malaysia", "my", "60"], ["Maldives", "mv", "960"], ["Mali", "ml", "223"], ["Malta", "mt", "356"], ["Marshall Islands", "mh", "692"], ["Martinique", "mq", "596"], ["Mauritania", "mr", "222"], ["Mauritius", "mu", "230"], ["Mayotte", "yt", "262", 1, ["269", "639"]], ["Mexico", "mx", "52"], ["Micronesia", "fm", "691"], ["Moldova", "md", "373"], ["Monaco", "mc", "377"], ["Mongolia", "mn", "976"], ["Montenegro", "me", "382"], ["Montserrat", "ms", "1", 16, ["664"]], ["Morocco", "ma", "212", 0], ["Mozambique", "mz", "258"], ["Myanmar (Burma)", "mm", "95"], ["Namibia", "na", "264"], ["Nauru", "nr", "674"], ["Nepal", "np", "977"], ["Netherlands", "nl", "31"], ["New Caledonia", "nc", "687"], ["New Zealand", "nz", "64"], ["Nicaragua", "ni", "505"], ["Niger", "ne", "227"], ["Nigeria", "ng", "234"], ["Niue", "nu", "683"], ["Norfolk Island", "nf", "672"], ["North Korea", "kp", "850"], ["North Macedonia", "mk", "389"], ["Northern Mariana Islands", "mp", "1", 17, ["670"]], ["Norway", "no", "47", 0], ["Oman", "om", "968"], ["Pakistan", "pk", "92"], ["Palau", "pw", "680"], ["Palestine", "ps", "970"], ["Panama", "pa", "507"], ["Papua New Guinea", "pg", "675"], ["Paraguay", "py", "595"], ["Peru", "pe", "51"], ["Philippines", "ph", "63"], ["Poland", "pl", "48"], ["Portugal", "pt", "351"], ["Puerto Rico", "pr", "1", 3, ["787", "939"]], ["Qatar", "qa", "974"], ["Réunion", "re", "262", 0], ["Romania", "ro", "40"], ["Russia", "ru", "7", 0], ["Rwanda", "rw", "250"], ["Samoa", "ws", "685"], ["San Marino", "sm", "378"], ["São Tomé & Príncipe", "st", "239"], ["Saudi Arabia", "sa", "966"], ["Senegal", "sn", "221"], ["Serbia", "rs", "381"], ["Seychelles", "sc", "248"], ["Sierra Leone", "sl", "232"], ["Singapore", "sg", "65"], ["Sint Maarten", "sx", "1", 21, ["721"]], ["Slovakia", "sk", "421"], ["Slovenia", "si", "386"], ["Solomon Islands", "sb", "677"], ["Somalia", "so", "252"], ["South Africa", "za", "27"], ["South Korea", "kr", "82"], ["South Sudan", "ss", "211"], ["Spain", "es", "34"], ["Sri Lanka", "lk", "94"], ["St Barthélemy", "bl", "590", 1], ["St Helena", "sh", "290"], ["St Kitts & Nevis", "kn", "1", 18, ["869"]], ["St Lucia", "lc", "1", 19, ["758"]], ["St Martin", "mf", "590", 2], ["St Pierre & Miquelon", "pm", "508"], ["St Vincent & Grenadines", "vc", "1", 20, ["784"]], ["Sudan", "sd", "249"], ["Suriname", "sr", "597"], ["Svalbard & Jan Mayen", "sj", "47", 1, ["79"]], ["Sweden", "se", "46"], ["Switzerland", "ch", "41"], ["Syria", "sy", "963"], ["Taiwan", "tw", "886"], ["Tajikistan", "tj", "992"], ["Tanzania", "tz", "255"], ["Thailand", "th", "66"], ["Timor-Leste", "tl", "670"], ["Togo", "tg", "228"], ["Tokelau", "tk", "690"], ["Tonga", "to", "676"], ["Trinidad & Tobago", "tt", "1", 22, ["868"]], ["Tunisia", "tn", "216"], ["Turkey", "tr", "90"], ["Turkmenistan", "tm", "993"], ["Turks & Caicos Islands", "tc", "1", 23, ["649"]], ["Tuvalu", "tv", "688"], ["Uganda", "ug", "256"], ["Ukraine", "ua", "380"], ["United Arab Emirates", "ae", "971"], ["United Kingdom", "gb", "44", 0], ["United States", "us", "1", 0], ["Uruguay", "uy", "598"], ["US Virgin Islands", "vi", "1", 24, ["340"]], ["Uzbekistan", "uz", "998"], ["Vanuatu", "vu", "678"], ["Vatican City", "va", "39", 1, ["06698"]], ["Venezuela", "ve", "58"], ["Vietnam", "vn", "84"], ["Wallis & Futuna", "wf", "681"], ["Western Sahara", "eh", "212", 1, ["5288", "5289"]], ["Yemen", "ye", "967"], ["Zambia", "zm", "260"], ["Zimbabwe", "zw", "263"], ["Åland Islands", "ax", "358", 1, ["18"]]];
         // loop over all of the countries above, restructuring the data to be objects with named keys
         for (var i = 0; i < allCountries.length; i++) {
             var c = allCountries[i];
@@ -36,7 +36,7 @@
             var keys = Object.keys(object);
             if (Object.getOwnPropertySymbols) {
                 var symbols = Object.getOwnPropertySymbols(object);
-                enumerableOnly && (symbols = symbols.filter(function(sym) {
+                enumerableOnly && (symbols = symbols.filter(function (sym) {
                     return Object.getOwnPropertyDescriptor(object, sym).enumerable;
                 })), keys.push.apply(keys, symbols);
             }
@@ -45,9 +45,9 @@
         function _objectSpread(target) {
             for (var i = 1; i < arguments.length; i++) {
                 var source = null != arguments[i] ? arguments[i] : {};
-                i % 2 ? ownKeys(Object(source), !0).forEach(function(key) {
+                i % 2 ? ownKeys(Object(source), !0).forEach(function (key) {
                     _defineProperty(target, key, source[key]);
-                }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function(key) {
+                }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) {
                     Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
                 });
             }
@@ -94,7 +94,7 @@
                     if (_x = (_i = _i.call(arr)).next, 0 === i) {
                         if (Object(_i) !== _i) return;
                         _n = !1;
-                    } else for (;!(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0) ;
+                    } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0);
                 } catch (err) {
                     _d = !0, _e = err;
                 } finally {
@@ -175,24 +175,25 @@
             onlyCountries: [],
             // bypass validation for these countries
             bypassValidationForCountries: [],
+            // callback for when country changes
+            onCountryChange: null,
             // use full screen popup instead of dropdown for country list
             useFullscreenPopup: typeof navigator !== "undefined" && typeof window !== "undefined" ? // we cannot just test screen size as some smartphones/website meta tags will report desktop
-            // resolutions
-            // Note: to target Android Mobiles (and not Tablets), we must find 'Android' and 'Mobile'
-            /Android.+Mobile|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 500 : false
+                // resolutions
+                // Note: to target Android Mobiles (and not Tablets), we must find 'Android' and 'Mobile'
+                /Android.+Mobile|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 500 : false
         };
         // run a method on each instance of the plugin
         var forEachInstance = function forEachInstance(method) {
             var instances = window.intlIdInputGlobals.instances;
-            Object.values(instances).forEach(function(instance) {
+            Object.values(instances).forEach(function (instance) {
                 return instance[method]();
             });
         };
         // this is our plugin class that we will create an instance of
         // eslint-disable-next-line no-unused-vars
-        var Iii = /*#__PURE__*/ function() {
-            function Iii(input) {
-                var customOptions = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+        var Iii = /*#__PURE__*/ function () {
+            function Iii(input, customOptions, onCountryChange) {
                 _classCallCheck(this, Iii);
                 this.id = id++;
                 this.idInput = input;
@@ -200,9 +201,10 @@
                 this.highlightedItem = null;
                 // process specified options / defaults
                 this.options = Object.assign({}, defaults, customOptions);
+                this.onCountryChange = onCountryChange;
                 this.hadInitialPlaceholder = Boolean(input.getAttribute("placeholder"));
             }
-            _createClass(Iii, [ {
+            _createClass(Iii, [{
                 key: "_init",
                 value: function _init() {
                     var _this = this;
@@ -219,11 +221,11 @@
                     // these promises get resolved when their individual requests complete
                     // this way the dev can do something like iii.promise.then(...) to know when all requests are
                     // complete
-                    var autoCountryPromise = new Promise(function(resolve, reject) {
+                    var autoCountryPromise = new Promise(function (resolve, reject) {
                         _this.resolveAutoCountryPromise = resolve;
                         _this.rejectAutoCountryPromise = reject;
                     });
-                    this.promise = Promise.all([ autoCountryPromise ]);
+                    this.promise = Promise.all([autoCountryPromise]);
                     // in various situations there could be no country selected initially, but we need to be able
                     // to assume this variable exists
                     this.selectedCountryData = {};
@@ -250,10 +252,10 @@
                 key: "_processAllCountries",
                 value: function _processAllCountries() {
                     if (this.options.onlyCountries.length) {
-                        var lowerCaseOnlyCountries = this.options.onlyCountries.map(function(country) {
+                        var lowerCaseOnlyCountries = this.options.onlyCountries.map(function (country) {
                             return country.toLowerCase();
                         });
-                        this.countries = allCountries.filter(function(country) {
+                        this.countries = allCountries.filter(function (country) {
                             return lowerCaseOnlyCountries.indexOf(country.iso2) > -1;
                         });
                     } else {
@@ -276,7 +278,7 @@
                 value: function _createEl(name, attrs, container) {
                     var el = document.createElement(name);
                     if (attrs) {
-                        Object.entries(attrs).forEach(function(_ref) {
+                        Object.entries(attrs).forEach(function (_ref) {
                             var _ref2 = _slicedToArray(_ref, 2), key = _ref2[0], value = _ref2[1];
                             return el.setAttribute(key, value);
                         });
@@ -385,18 +387,18 @@
                         const idInputName = this.idInput.getAttribute("name") || "";
                         const names = hiddenInput(idInputName);
                         if (names.id) {
-                          this.hiddenInput = this._createEl("input", {
-                            type: "hidden",
-                            name: names.id
-                          });
-                          wrapper.appendChild(this.hiddenInput);
+                            this.hiddenInput = this._createEl("input", {
+                                type: "hidden",
+                                name: names.id
+                            });
+                            wrapper.appendChild(this.hiddenInput);
                         }
                         if (names.country) {
-                          this.hiddenInputCountry = this._createEl("input", {
-                            type: "hidden",
-                            name: names.country
-                          });
-                          wrapper.appendChild(this.hiddenInputCountry);
+                            this.hiddenInputCountry = this._createEl("input", {
+                                type: "hidden",
+                                name: names.country
+                            });
+                            wrapper.appendChild(this.hiddenInputCountry);
                         }
                     }
                 }
@@ -466,10 +468,10 @@
                 value: function _initHiddenInputListener() {
                     this._handleHiddenInputSubmit = () => {
                         if (this.hiddenInput) {
-                          this.hiddenInput.value = this.selectedCountryData.iso2;
+                            this.hiddenInput.value = this.selectedCountryData.iso2;
                         }
                         if (this.hiddenInputCountry) {
-                          this.hiddenInputCountry.value = this.selectedCountryData.iso2 || "";
+                            this.hiddenInputCountry.value = this.selectedCountryData.iso2 || "";
                         }
                         debugger;
                     };
@@ -485,7 +487,7 @@
                     // hack for input nested inside label (which is valid markup): clicking the selected-flag to
                     // open the dropdown would then automatically trigger a 2nd click on the input which would
                     // close it again
-                    this._handleLabelClick = function(e) {
+                    this._handleLabelClick = function (e) {
                         // if the dropdown is closed, then focus the input, else ignore the click
                         if (_this3.dropdownContent.classList.contains("iii__hide")) {
                             _this3.idInput.focus();
@@ -498,7 +500,7 @@
                         label.addEventListener("click", this._handleLabelClick);
                     }
                     // toggle country dropdown on click
-                    this._handleClickSelectedFlag = function() {
+                    this._handleClickSelectedFlag = function () {
                         // only intercept this event if we're opening the dropdown
                         // else let it bubble up to the top ("click-off-to-close" listener)
                         // we cannot just stopPropagation as it may be needed to close another instance
@@ -508,9 +510,9 @@
                     };
                     this.selectedFlag.addEventListener("click", this._handleClickSelectedFlag);
                     // open dropdown if selected flag is focused and they press up/down/space/enter
-                    this._handleFlagsContainerKeydown = function(e) {
+                    this._handleFlagsContainerKeydown = function (e) {
                         var isDropdownHidden = _this3.dropdownContent.classList.contains("iii__hide");
-                        if (isDropdownHidden && [ "ArrowUp", "ArrowDown", " ", "Enter" ].includes(e.key)) {
+                        if (isDropdownHidden && ["ArrowUp", "ArrowDown", " ", "Enter"].includes(e.key)) {
                             // prevent form from being submitted if "ENTER" was pressed
                             e.preventDefault();
                             // prevent event from being handled again by document
@@ -630,7 +632,7 @@
                     var _this8 = this;
                     // when mouse over a list item, just highlight that one
                     // we add the class "highlight", so if they hit "enter" we know which one to select
-                    this._handleMouseoverCountryList = function(e) {
+                    this._handleMouseoverCountryList = function (e) {
                         // handle event delegation, as we're listening for this event on the countryList
                         var listItem = e.target.closest(".iii__country");
                         if (listItem) {
@@ -639,7 +641,7 @@
                     };
                     this.countryList.addEventListener("mouseover", this._handleMouseoverCountryList);
                     // listen for country selection
-                    this._handleClickCountryList = function(e) {
+                    this._handleClickCountryList = function (e) {
                         var listItem = e.target.closest(".iii__country");
                         if (listItem) {
                             _this8._selectListItem(listItem);
@@ -650,7 +652,7 @@
                     // (except when this initial opening click is bubbling up)
                     // we cannot just stopPropagation as it may be needed to close another instance
                     var isOpening = true;
-                    this._handleClickOffToClose = function() {
+                    this._handleClickOffToClose = function () {
                         if (!isOpening) {
                             _this8._closeDropdown();
                         }
@@ -663,10 +665,10 @@
                     // listen on the document because that's where key events are triggered if no input has focus
                     var query = "";
                     var queryTimer = null;
-                    this._handleKeydownOnDropdown = function(e) {
+                    this._handleKeydownOnDropdown = function (e) {
                         // prevent down key from scrolling the whole page,
                         // and enter key from submitting a form etc
-                        if ([ "ArrowUp", "ArrowDown", "Enter", "Escape" ].includes(e.key)) {
+                        if (["ArrowUp", "ArrowDown", "Enter", "Escape"].includes(e.key)) {
                             e.preventDefault();
                             e.stopPropagation();
                             // up and down to navigate
@@ -689,7 +691,7 @@
                             query += e.key.toLowerCase();
                             _this8._searchForCountry(query);
                             // if the timer hits 1 second, reset the query
-                            queryTimer = setTimeout(function() {
+                            queryTimer = setTimeout(function () {
                                 query = "";
                             }, 1e3);
                         }
@@ -705,19 +707,19 @@
                             }
                         };
                         var keyupTimer = null;
-                        this._handleSearchChange = function() {
+                        this._handleSearchChange = function () {
                             // filtering country nodes is expensive (lots of DOM manipulation), so rate limit it
                             if (keyupTimer) {
                                 clearTimeout(keyupTimer);
                             }
-                            keyupTimer = setTimeout(function() {
+                            keyupTimer = setTimeout(function () {
                                 doFilter();
                                 keyupTimer = null;
                             }, 100);
                         };
                         this.searchInput.addEventListener("input", this._handleSearchChange);
                         // stop propagation on search input click, so doesn't trigger click-off-to-close listener
-                        this.searchInput.addEventListener("click", function(e) {
+                        this.searchInput.addEventListener("click", function (e) {
                             return e.stopPropagation();
                         });
                     }
@@ -986,6 +988,9 @@
                 key: "_triggerCountryChange",
                 value: function _triggerCountryChange() {
                     this._trigger("countrychange");
+                    if (this.onCountryChange && typeof this.onCountryChange === 'function') {
+                        this.onCountryChange(this.selectedCountryData);
+                    }
                 }
             }, {
                 key: "destroy",
@@ -1027,7 +1032,7 @@
             }, {
                 key: "isValid",
                 value: function isValid() {
-                    if(this.options.bypassValidationForCountries.length && this.options.bypassValidationForCountries.includes(this.selectedCountryData.iso2.toUpperCase())){
+                    if (this.options.bypassValidationForCountries.length && this.options.bypassValidationForCountries.includes(this.selectedCountryData.iso2.toUpperCase())) {
                         return true;
                     }
 
@@ -1049,22 +1054,22 @@
                 value: function setNumber(number) {
                     this._updateValFromNumber(number);
                 }
-            } ]);
+            }]);
             return Iii;
         }();
         /********************
         *  STATIC METHODS
         ********************/
         // get the country data object
-        intlIdInputGlobals.getCountryData = function() {
+        intlIdInputGlobals.getCountryData = function () {
             return allCountries;
         };
         // default options
         intlIdInputGlobals.defaults = defaults;
 
         // convenience wrapper
-        return function(input, options) {
-            var iii = new Iii(input, options);
+        return function (input, options, onCountryChange) {
+            var iii = new Iii(input, options, onCountryChange);
             iii._init();
             input.setAttribute("data-intl-id-input-id", iii.id);
             window.intlIdInputGlobals.instances[iii.id] = iii;
@@ -1073,48 +1078,48 @@
     }();
 });
 //Validation section
-function validate(val, iso2){
-    try{
+function validate(val, iso2) {
+    try {
         const ruleset = validationRuleset[iso2];
-    
+
         if (!ruleset) {
             throw new Error(`Ruleset not found for ISO2: ${iso2}`);
         }
 
-        if(ruleset.numeric){
-            if(isNaN(parseFloat(val)) || !isFinite(val)){
+        if (ruleset.numeric) {
+            if (isNaN(parseFloat(val)) || !isFinite(val)) {
                 return false;
             }
         }
-    
-        if(ruleset.minLength){
+
+        if (ruleset.minLength) {
             const length = val.length;
-            if(length < ruleset.minLength || length > ruleset.minLength + ruleset.lengthDelta){
+            if (length < ruleset.minLength || length > ruleset.minLength + ruleset.lengthDelta) {
                 return false;
             }
         }
-    
-        if(ruleset.dateFormat){
-            if(!dateValidation(val.substr(ruleset.dateIndex, ruleset.dateLength), ruleset.dateFormat)){
+
+        if (ruleset.dateFormat) {
+            if (!dateValidation(val.substr(ruleset.dateIndex, ruleset.dateLength), ruleset.dateFormat)) {
                 return false;
             }
         }
-    
-        if(ruleset.specialValidation){
-            if(!specialValidation(val, ruleset.specialValidation)){
+
+        if (ruleset.specialValidation) {
+            if (!specialValidation(val, ruleset.specialValidation)) {
                 return false;
             }
         }
     }
-    catch(error){
+    catch (error) {
         console.error(error.message);
         return false;
     }
 
     return true;
 }
-function dateValidation(val, format, dob = null){
-    switch(format){
+function dateValidation(val, format, dob = null) {
+    switch (format) {
         case 'yyMMdd':
             const year20 = parseInt(val.substr(0, 2)) + 1900; //20th century year
             const year21 = year20 + 100; //21st century year
@@ -1131,54 +1136,54 @@ function dateValidation(val, format, dob = null){
             if (date20.getMonth() !== month && date21.getMonth() !== month) {
                 return false;
             }
-            
-            if(dob){
+
+            if (dob) {
                 //check that either date20 or date21 match the specified dob
             }
 
             return true;
     }
 }
-function specialValidation(val, specialCase){
+function specialValidation(val, specialCase) {
     switch (specialCase) {
         case 'SZ_checksum':
         case 'ZA_checksum':
             let oddCheck = 0;
             let evenResultAdd = 0;
-    
+
             for (let i = 0; i < 12; i += 2) {
                 oddCheck += parseInt(val[i]);
             }
-            
+
             let evenCheckNum = '';
             for (let i = 1; i < 12; i += 2) {
                 evenCheckNum += val[i];
             }
-            
+
             evenCheckNum = parseInt(evenCheckNum) * 2;
             evenCheckNum.toString().split('').forEach(digit => evenResultAdd += parseInt(digit));
-            
+
             let addChecks = oddCheck + evenResultAdd;
-            
+
             let lastDigitCheck = 10 - (addChecks % 10);
-            
+
             if (lastDigitCheck >= 10) {
                 lastDigitCheck %= 10;
             }
-            
+
             return lastDigitCheck === parseInt(val[12]);
         default:
             return false;
-    }  
+    }
 }
 //Validation rules in the following order:
 // iso2 code, numeric, minimum length, difference to maximum length, dateFormat, dateIndex, dateLength, special validation cases
-const validationRulesets = [ 
-    [ "bw", true, 9, 0, null, null, null, null ], 
-    [ "sz", true, 13, 0, "yyMMdd", 0, 6, "SZ_checksum" ], 
-    [ "ls", true, 12, 0, null, null, null, null ], 
-    [ "na", true, 11, 0, "yyMMdd", 0, 6, null ], 
-    [ "za", true, 13, 0, "yyMMdd", 0, 6, "ZA_checksum" ] 
+const validationRulesets = [
+    ["bw", true, 9, 0, null, null, null, null],
+    ["sz", true, 13, 0, "yyMMdd", 0, 6, "SZ_checksum"],
+    ["ls", true, 12, 0, null, null, null, null],
+    ["na", true, 11, 0, "yyMMdd", 0, 6, null],
+    ["za", true, 13, 0, "yyMMdd", 0, 6, "ZA_checksum"]
 ];
 
 const validationRuleset = {};

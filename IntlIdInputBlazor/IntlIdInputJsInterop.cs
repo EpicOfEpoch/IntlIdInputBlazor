@@ -7,6 +7,7 @@ public class IntlIdInputJsInterop : IAsyncDisposable
 {
     private readonly Lazy<Task<IJSObjectReference>> _moduleTask;
     private IJSObjectReference? _module;
+    private EventCallback<IntlIdCountryData>? _onCountryChangeCallback;
 
     public IntlIdInputJsInterop(IJSRuntime jsRuntime)
     {
@@ -14,10 +15,20 @@ public class IntlIdInputJsInterop : IAsyncDisposable
             "import", "./_content/IntlIdInputBlazor/js/intlIdInputJsInterop.js").AsTask());
     }
 
-    public async ValueTask<int> Init(ElementReference reference, object options)
+    public async ValueTask<int> InitializeAsync(ElementReference reference, object options, EventCallback<IntlIdCountryData> onCountryChange)
     {
         _module = await _moduleTask.Value;
-        return await (await _moduleTask.Value).InvokeAsync<int>("init", reference, options);
+        _onCountryChangeCallback = onCountryChange;
+        return await (await _moduleTask.Value).InvokeAsync<int>("init", reference, options, DotNetObjectReference.Create(this), nameof(this.HandleCountryChange));
+    }
+
+    [JSInvokable]
+    public async Task HandleCountryChange(IntlIdCountryData countryData)
+    {
+        if (_onCountryChangeCallback.HasValue)
+        {
+            await _onCountryChangeCallback.Value.InvokeAsync(countryData);
+        }
     }
 
     public async ValueTask<IntlId> GetData(int inputIndex)
@@ -34,7 +45,7 @@ public class IntlIdInputJsInterop : IAsyncDisposable
     {
         if (_moduleTask.IsValueCreated)
         {
-            var module = await _moduleTask.Value;
+            IJSObjectReference module = await _moduleTask.Value;
             await module.DisposeAsync();
         }
     }

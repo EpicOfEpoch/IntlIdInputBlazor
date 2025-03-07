@@ -1,4 +1,5 @@
-﻿@inherits Microsoft.AspNetCore.Components.Forms.InputBase<IntlId>
+﻿@using Microsoft.JSInterop
+@inherits Microsoft.AspNetCore.Components.Forms.InputBase<IntlId>
 @inject IntlIdInputJsInterop IntlIdInputJsInterop
 
 <input type="text" @onchange="OnChange" @ref="_idInput"/>
@@ -19,21 +20,26 @@
     [Parameter]
     public IEnumerable<string> PreferredCountries { get; set; } = new[] { "us", "gb" };
 
+    [Parameter]
+    public EventCallback<IntlIdCountryData> OnCountryChange { get; set; }
+
     private ElementReference _idInput;
     private int _inputIndex;
+
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
         {
-            _inputIndex = await IntlIdInputJsInterop.Init(_idInput, new
+            _inputIndex = await IntlIdInputJsInterop.InitializeAsync(_idInput, new
             {
                 AllowDropDown,
                 ExcludeCountries,
                 InitialCountry,
                 OnlyCountries,
                 PreferredCountries
-            });
+            }
+            , OnCountryChange);
 
             if (CurrentValue is not null)
             {
