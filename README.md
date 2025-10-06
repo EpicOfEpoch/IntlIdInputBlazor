@@ -32,7 +32,7 @@
 ## Parameters
 
 | Option | Type  | Description |
-|--------|------|---------|-------------|
+|--------|------|-------------|
 | `Value` | string | Two-way bound property to hold the input value. |
 | `Country` | string | ISO country code to determine formatting/validation. |
 | `Placeholder` | string | Placeholder text for the input. |
